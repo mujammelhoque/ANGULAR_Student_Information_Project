@@ -1,0 +1,128 @@
+<div class="container">
+<div class="mb-2" *ngIf="token">
+   
+  
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand" href="#"><img class="w-25" src="https://th.bing.com/th/id/OIP.A_mSsYWSBQp4vfWKtSCA4wHaEu?w=273&h=180&c=7&o=5&pid=1.7" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto topnav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/phone']" class="btn ">Phone Manager</a>
+                </li>
+                
+                
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-danger" (click)="logOut()">Logout</button>                  
+                </li>
+               
+            </ul>
+        </div>
+
+            <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Customer Sign In</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form>
+                        <label class="sr-only" for="usrname">Username</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+
+                        <label class="sr-only" for="Password">Name</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2"><i class="fa fa-key"></i></span>
+                            </div>
+                            <input id="Password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" >Sign In</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+            
+
+    </nav>
+    </div>
+   
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let image of images">
+        <div class="wrapper">
+          <img class="w-100 " [src]="image.src" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h3>{{ image.title }}</h3>
+          <p>{{ image.short }}</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+        
+   
+
+<table class="table table-strip mt-2">
+<tr class="bg-dark text-white">
+    <td> ID</td>
+    <td> User Name </td>
+    <td> First Name </td>
+    <td> Last Name </td>
+    <td> Age </td>
+    <td> phone </td>
+    <td> image </td>
+     <td> Action </td>
+</tr>
+
+<tr *ngFor="let user of this.users">
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+    <td>{{user.age}}</td>
+     <td>{{user.salary}}</td>
+     
+     <td> <img src="../../../assets/images/{{user.images}}" style="width: 100px; height: 80x;" alt=""></td>
+    <td>
+    <a href="javascript:void(0);" class="btn btn-success" (click)="view(user)" >View</a> 
+    <a href="javascript:void(0);" class="btn btn-success" style="margin-left: 5px; margin-right: 5px;" (click)="edit(user)">Edit</a> 
+    <a href="javascript:void(0);" class="btn btn-danger" (click)="deleteUser(user)">Delete</a></td>
+</tr>
+<tr>
+     <td>&nbsp;</td>
+      <td><a [routerLink]="['/add']" class="btn btn-success btn-lg">Add User</a></td>
+</tr>
+</table>
+</div>
